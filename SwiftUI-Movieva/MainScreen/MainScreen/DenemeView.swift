@@ -8,35 +8,39 @@
 import SwiftUI
 
 struct DenemeView: View {
-    let colors = [Color.red, Color.green, Color.blue, Color.orange, Color.pink]
+    
+    var body: some View {
         
-        @State private var selectedColor = 0
-
-        var body: some View {
-            GeometryReader { geometry in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .center) {
-                        ForEach(self.colors, id: \.self) { color in
-                            Rectangle()
-                                .fill(color)
-                                .frame(width: geometry.size.width / 1.3, height: geometry.size.height / 4)
-                        }
-                    }
-                    .padding(.horizontal, 12)
-                    
-                    Picker(selection: self.$selectedColor, label: Text("")) {
-                        ForEach(0 ..< self.colors.count) {
-                            Text("Color \($0)").tag($0)
-                        }
-                    }
-                    .pickerStyle(WheelPickerStyle())
+        List {
+            LazyVStack{
+                Section{
+                    Text("What do you want to watch")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .fontWeight(.medium)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 }
+                .padding(.bottom, 16)
+                
+                Section{
+                    TopSlider()
+                }
+                .padding(.bottom, 16)
+                
+                VStack{
+                    Section{
+                        MainPicker()
+                    }
+                }
+                .frame(height: 600)
             }
         }
-    }
-
-struct DenemeView_Previews: PreviewProvider {
-    static var previews: some View {
-        DenemeView()
+        .listStyle(PlainListStyle())
     }
 }
+    
+    struct DenemeView_Previews: PreviewProvider {
+        static var previews: some View {
+            DenemeView()
+        }
+    }

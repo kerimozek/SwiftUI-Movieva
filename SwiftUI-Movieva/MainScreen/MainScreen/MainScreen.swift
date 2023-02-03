@@ -11,22 +11,31 @@ struct MainScreen: View {
     
     var body: some View {
         
-        
-        
-        GeometryReader { geometry in
-            VStack{
-                Text("What do you want to watch")
+        List {
+            LazyVStack{
+                Section{
+                    Text("What do you want to watch")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .fontWeight(.medium)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.bottom, 16)
+                
+                Section{
+                    TopSlider()
+                }
+                .padding(.bottom, 16)
                 
                 VStack{
-                    TopSlider()
-                    
-                    MainPicker()
-                        .padding(.bottom, 16)
+                    Section{
+                        MainPicker()
+                    }
                 }
-                .frame(height: geometry.size.height)
-               
+                .frame(height: 600)
             }
         }
+        .listStyle(PlainListStyle())
     }
 }
 
