@@ -10,32 +10,34 @@ import SwiftUI
 struct MainScreen: View {
     
     var body: some View {
-        
-        List {
-            LazyVStack{
-                Section{
-                    Text("What do you want to watch")
-                        .font(.title2)
-                        .foregroundColor(.black)
-                        .fontWeight(.medium)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                }
-                .padding(.bottom, 16)
-                
-                Section{
-                    TopSlider()
-                }
-                .padding(.bottom, 16)
-                
-                VStack{
-                    Section{
-                        MainPicker()
-                    }
-                }
-                .frame(height: 600)
+        LazyVStack{
+            Section{
+                Text("What do you want to watch")
+                    .font(.title2)
+                    .foregroundColor(.black)
+                    .fontWeight(.medium)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             }
+            .padding(16)
+            
+            Section{
+                TopSlider()
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 8)
+            
+            VStack{
+                Section{
+                    MainPicker()
+                }
+                .padding(8)
+            }
+            .frame(height: 500)
+            .padding(.bottom, 8)
         }
-        .listStyle(PlainListStyle())
+        .padding(.bottom, 20)
+        
+        
     }
 }
 

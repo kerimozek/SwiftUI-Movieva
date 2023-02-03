@@ -11,20 +11,23 @@ struct ContentView: View {
     
     var body: some View {
         
-        TabView{
-            TopSlider()
-                .tabItem {
-                    Image(systemName: "house")
-                }
-            SearchScreen()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                }
-            WatchList()
-                .tabItem {
-                    Image(systemName: "bookmark")
-                }
-        }
+     
+            TabView{
+                MainScreen()
+                    .tabItem {
+                        Image(systemName: "house")
+                    }
+                    .padding(.top, 100)
+                SearchScreen()
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                    }
+                WatchList()
+                    .tabItem {
+                        Image(systemName: "bookmark")
+                    }
+            }
+              
     }
 }
 
