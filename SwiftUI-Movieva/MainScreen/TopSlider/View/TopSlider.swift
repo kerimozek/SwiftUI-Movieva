@@ -15,17 +15,17 @@ struct TopSlider: View {
     var body: some View {
         
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .center) {
+            HStack(alignment: .center, spacing: 12) {
                 ForEach(images, id: \.self) { image in
                     Image(image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200)
+                        .cornerRadius(12)
                 }
             }
-            
         }
-        .padding(.horizontal, 12)
+       
     }
 }
 
