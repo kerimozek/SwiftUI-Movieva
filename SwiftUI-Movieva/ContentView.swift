@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         
         TabView{
-            MainScreen()
+            TopSlider()
                 .tabItem {
                     Image(systemName: "house")
                 }
