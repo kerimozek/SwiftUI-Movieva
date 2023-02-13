@@ -16,7 +16,7 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "house")
                     }
-                    .padding(.top, 100)
+                   
                 ListViewDeneme()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
