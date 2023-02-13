@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+   
     var body: some View {
         
-     
             TabView{
                 MainScreen()
                     .tabItem {
                         Image(systemName: "house")
                     }
                     .padding(.top, 100)
-                SearchScreen()
+                ListViewDeneme()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                     }
