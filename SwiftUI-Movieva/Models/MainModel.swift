@@ -31,5 +31,24 @@ struct Company: Codable {
 }
 
 
+struct Movie: Codable {
+    let page: Int?
+    let results: [ResultMovie]?
+}
+
+struct ResultMovie: Codable {
+    var adult: Bool?
+    var backdrop_path: String?
+    var genre_ids: [Int]?
+    var id: Int?
+    var original_language, original_title, overview: String?
+    var popularity: Double?
+    var poster_path: String?
+    var release_date, title: String?
+    var video: Bool?
+    var vote_average: Double?
+    var vote_count: Int?
+}
+
 
 

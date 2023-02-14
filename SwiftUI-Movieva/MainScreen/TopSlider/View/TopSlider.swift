@@ -10,6 +10,8 @@ import SwiftUI
 struct TopSlider: View {
     
     @State private var imageData: Data?
+    @State var isLoading = true
+    
     let photo: Photos
     
     //    let images = ["mikasa", "ereh", "levi", "mikasa", "ereh", "levi"]
@@ -25,7 +27,14 @@ struct TopSlider: View {
                     .frame(width: 200)
                     .cornerRadius(12)
             } else {
-                Text("Loading image...")
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(2.0)
+                    .foregroundColor(.white)
+                    .padding(20)
+                    .clipShape(Circle())
+                    .opacity(isLoading ? 1.0 : 0.0)
+                
             }
         }
         .onAppear {

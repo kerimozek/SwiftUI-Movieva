@@ -26,6 +26,7 @@
 		ABF208AA299A27E1004826FC /* UrlToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208A9299A27E1004826FC /* UrlToImage.swift */; };
 		ABF208AC299A2F09004826FC /* denemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208AB299A2F09004826FC /* denemeViewModel.swift */; };
 		ABF208B0299A3964004826FC /* ListViewDeneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208AF299A3964004826FC /* ListViewDeneme.swift */; };
+		ABF208B2299A81CB004826FC /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208B1299A81CB004826FC /* MovieViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		ABF208A9299A27E1004826FC /* UrlToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlToImage.swift; sourceTree = "<group>"; };
 		ABF208AB299A2F09004826FC /* denemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = denemeViewModel.swift; sourceTree = "<group>"; };
 		ABF208AF299A3964004826FC /* ListViewDeneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDeneme.swift; sourceTree = "<group>"; };
+		ABF208B1299A81CB004826FC /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF208A729963E0D004826FC /* MainViewModel.swift */,
+				ABF208B1299A81CB004826FC /* MovieViewModel.swift */,
 			);
 			path = MainViewModel;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF208B2299A81CB004826FC /* MovieViewModel.swift in Sources */,
 				ABF208B0299A3964004826FC /* ListViewDeneme.swift in Sources */,
 				ABF208A2298D0F77004826FC /* DenemeView.swift in Sources */,
 				ABF208A529963CD9004826FC /* MainModel.swift in Sources */,

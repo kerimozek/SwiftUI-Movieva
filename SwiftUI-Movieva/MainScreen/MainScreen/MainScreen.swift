@@ -3,6 +3,7 @@ import SwiftUI
 struct MainScreen: View {
     
     @StateObject private var vm = MainViewModel()
+    @StateObject private var movieVm = MovieViewModel()
     
     var body: some View {
         ScrollView {
@@ -41,6 +42,7 @@ struct MainScreen: View {
                 .padding(.bottom, 20)
             }
             .onAppear(perform: vm.fetchPhotos)
+            .onAppear(perform: movieVm.fetchMovies)
         }
         
     }

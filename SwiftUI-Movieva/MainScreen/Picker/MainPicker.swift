@@ -22,11 +22,11 @@ struct MainPicker: View {
             .pickerStyle(SegmentedPickerStyle())
             
             if selectedView == 0 {
-                LatestView()
-            } else if selectedView == 1 {
                 UpcomingView()
-            } else {
+            } else if selectedView == 1 {
                 TopRatedView()
+            } else {
+                UpcomingView()
             }
         }
     }
