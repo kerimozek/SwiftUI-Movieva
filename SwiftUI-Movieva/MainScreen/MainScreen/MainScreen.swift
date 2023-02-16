@@ -2,8 +2,7 @@ import SwiftUI
 
 struct MainScreen: View {
     
-    @StateObject private var vm = MainViewModel()
-    @StateObject private var movieVm = MovieViewModel()
+    @StateObject private var vm = MovieViewModel()
     
     var body: some View {
         
@@ -21,13 +20,7 @@ struct MainScreen: View {
                         .padding(16)
                         
                         Section{
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(alignment: .center, spacing: 12) {
-                                    ForEach(vm.photos.prefix(12), id: \.id) { image in
-                                        TopSlider(photo: image)
-                                    }
-                                }
-                            }
+                            LatestView()
                         }
                         .padding(.horizontal, 16)
                         .padding(.bottom, 8)
@@ -43,8 +36,7 @@ struct MainScreen: View {
                     }
                     .padding(.bottom, 20)
                 }
-                .onAppear(perform: vm.fetchPhotos)
-                .onAppear(perform: movieVm.fetchMovies)
+                .onAppear(perform: vm.fetchMovies)
             }
         }
        

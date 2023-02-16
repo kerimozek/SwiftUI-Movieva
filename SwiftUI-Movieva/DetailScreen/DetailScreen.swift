@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import SDWebImage
 
 struct DetailScreen: View {
     
@@ -32,6 +33,7 @@ struct DetailScreen: View {
                                     Image(systemName: "arrow.left")
                                         .font(.system(size: 32))
                                         .foregroundColor(Color(UIColor.yellow))
+                                        .shadow(color: Color.black, radius: 2)
                                 })
 
                             }
@@ -64,6 +66,7 @@ struct DetailScreen: View {
                         }
                         .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.124825187, green: 0.1294132769, blue: 0.1380611062, alpha: 1)), Color.clear]), startPoint: .bottom, endPoint: .top))
                     )
+                    .cornerRadius(40)
                 
                 Text(viewModel.movies?.overview ?? "Loading...")
                     .foregroundColor(.gray)
