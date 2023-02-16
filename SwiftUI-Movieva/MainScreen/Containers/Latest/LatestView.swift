@@ -29,10 +29,10 @@ struct LatestSingleMovie: View {
     
     var body: some View {
         VStack {
-            WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.posterPath ?? "")"))
+            WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.backdropPath ?? "")"))
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 200)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 350, height: 250)
                 .redacted(reason: item.posterPath == nil ? .placeholder : .init())
                 .cornerRadius(12)
         }
