@@ -27,6 +27,8 @@
 		ABF208AC299A2F09004826FC /* denemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208AB299A2F09004826FC /* denemeViewModel.swift */; };
 		ABF208B0299A3964004826FC /* ListViewDeneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208AF299A3964004826FC /* ListViewDeneme.swift */; };
 		ABF208B2299A81CB004826FC /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208B1299A81CB004826FC /* MovieViewModel.swift */; };
+		ABF208B9299D12CC004826FC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ABF208B8299D12CC004826FC /* SDWebImageSwiftUI */; };
+		ABF208BB299D2215004826FC /* SdWebImageDeneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208BA299D2215004826FC /* SdWebImageDeneme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,7 @@
 		ABF208AB299A2F09004826FC /* denemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = denemeViewModel.swift; sourceTree = "<group>"; };
 		ABF208AF299A3964004826FC /* ListViewDeneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDeneme.swift; sourceTree = "<group>"; };
 		ABF208B1299A81CB004826FC /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		ABF208BA299D2215004826FC /* SdWebImageDeneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SdWebImageDeneme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF208B9299D12CC004826FC /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF20896298CFAFD004826FC /* LatestView.swift */,
+				ABF208BA299D2215004826FC /* SdWebImageDeneme.swift */,
 			);
 			path = Latest;
 			sourceTree = "<group>";
@@ -259,6 +264,9 @@
 			dependencies = (
 			);
 			name = "SwiftUI-Movieva";
+			packageProductDependencies = (
+				ABF208B8299D12CC004826FC /* SDWebImageSwiftUI */,
+			);
 			productName = "SwiftUI-API-Call-Decode-JSON";
 			productReference = ABCE0EB1298BCBE000B5D8E1 /* SwiftUI-Movieva.app */;
 			productType = "com.apple.product-type.application";
@@ -287,6 +295,9 @@
 				Base,
 			);
 			mainGroup = ABCE0EA8298BCBE000B5D8E1;
+			packageReferences = (
+				ABF208B7299D12CC004826FC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = ABCE0EB2298BCBE000B5D8E1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF208BB299D2215004826FC /* SdWebImageDeneme.swift in Sources */,
 				ABF208B2299A81CB004826FC /* MovieViewModel.swift in Sources */,
 				ABF208B0299A3964004826FC /* ListViewDeneme.swift in Sources */,
 				ABF208A2298D0F77004826FC /* DenemeView.swift in Sources */,
@@ -533,6 +545,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ABF208B7299D12CC004826FC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ABF208B8299D12CC004826FC /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABF208B7299D12CC004826FC /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ABCE0EA9298BCBE000B5D8E1 /* Project object */;
 }

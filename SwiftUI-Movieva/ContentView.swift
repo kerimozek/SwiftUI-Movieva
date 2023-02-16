@@ -21,7 +21,7 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                     }
-                WatchList()
+                LatestView()
                     .tabItem {
                         Image(systemName: "bookmark")
                     }
