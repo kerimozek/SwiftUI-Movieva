@@ -29,7 +29,6 @@ class MovieViewModel: ObservableObject {
                     let result = try JSONDecoder().decode(Movie.self, from: data)
                     DispatchQueue.main.async {
                         self?.movies = result.results
-                        print(self?.movies?.first)
                     }
                 } catch {
                     print("error: \(error.localizedDescription)")
