@@ -28,7 +28,6 @@
 		ABF208B0299A3964004826FC /* ListViewDeneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208AF299A3964004826FC /* ListViewDeneme.swift */; };
 		ABF208B2299A81CB004826FC /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208B1299A81CB004826FC /* MovieViewModel.swift */; };
 		ABF208B9299D12CC004826FC /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ABF208B8299D12CC004826FC /* SDWebImageSwiftUI */; };
-		ABF208BB299D2215004826FC /* SdWebImageDeneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208BA299D2215004826FC /* SdWebImageDeneme.swift */; };
 		ABF208BE299E46AB004826FC /* DetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208BD299E46AB004826FC /* DetailScreen.swift */; };
 		ABF208C0299E47FB004826FC /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208BF299E47FB004826FC /* MovieDetailViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +54,6 @@
 		ABF208AB299A2F09004826FC /* denemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = denemeViewModel.swift; sourceTree = "<group>"; };
 		ABF208AF299A3964004826FC /* ListViewDeneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDeneme.swift; sourceTree = "<group>"; };
 		ABF208B1299A81CB004826FC /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
-		ABF208BA299D2215004826FC /* SdWebImageDeneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SdWebImageDeneme.swift; sourceTree = "<group>"; };
 		ABF208BD299E46AB004826FC /* DetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreen.swift; sourceTree = "<group>"; };
 		ABF208BF299E47FB004826FC /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				ABF20896298CFAFD004826FC /* LatestView.swift */,
-				ABF208BA299D2215004826FC /* SdWebImageDeneme.swift */,
 			);
 			path = Latest;
 			sourceTree = "<group>";
@@ -331,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABF208BE299E46AB004826FC /* DetailScreen.swift in Sources */,
-				ABF208BB299D2215004826FC /* SdWebImageDeneme.swift in Sources */,
 				ABF208B2299A81CB004826FC /* MovieViewModel.swift in Sources */,
 				ABF208B0299A3964004826FC /* ListViewDeneme.swift in Sources */,
 				ABF208A2298D0F77004826FC /* DenemeView.swift in Sources */,
