@@ -6,44 +6,48 @@ struct MainScreen: View {
     @StateObject private var movieVm = MovieViewModel()
     
     var body: some View {
-        ScrollView {
-            ZStack{
-                VStack(){
-                    Section{
-                        Text("What do you want to watch")
-                            .font(.title2)
-                            .foregroundColor(.black)
-                            .fontWeight(.medium)
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                    }
-                    .padding(16)
-                    
-                    Section{
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(alignment: .center, spacing: 12) {
-                                ForEach(vm.photos.prefix(12), id: \.id) { image in
-                                    TopSlider(photo: image)
+        
+        NavigationView{
+            ScrollView {
+                ZStack{
+                    VStack(){
+                        Section{
+                            Text("What do you want to watch")
+                                .font(.title2)
+                                .foregroundColor(.black)
+                                .fontWeight(.medium)
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(16)
+                        
+                        Section{
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(alignment: .center, spacing: 12) {
+                                    ForEach(vm.photos.prefix(12), id: \.id) { image in
+                                        TopSlider(photo: image)
+                                    }
                                 }
                             }
                         }
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 8)
-                    
-                    VStack{
-                        Section{
-                            MainPicker()
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 8)
+                        
+                        VStack{
+                            Section{
+                                MainPicker()
+                            }
+                            .padding(8)
                         }
-                        .padding(8)
+                        .frame(height: 600)
+                        .padding(.bottom, 8)
                     }
-                    .frame(height: 600)
-                    .padding(.bottom, 8)
+                    .padding(.bottom, 20)
                 }
-                .padding(.bottom, 20)
+                .onAppear(perform: vm.fetchPhotos)
+                .onAppear(perform: movieVm.fetchMovies)
             }
-            .onAppear(perform: vm.fetchPhotos)
-            .onAppear(perform: movieVm.fetchMovies)
         }
+       
         
     }
 }
