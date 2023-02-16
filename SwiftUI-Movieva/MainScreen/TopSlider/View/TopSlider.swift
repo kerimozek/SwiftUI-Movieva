@@ -11,11 +11,7 @@ struct TopSlider: View {
     
     @State private var imageData: Data?
     @State var isLoading = true
-    
     let photo: Photos
-    
-    //    let images = ["mikasa", "ereh", "levi", "mikasa", "ereh", "levi"]
-    
     
     var body: some View {
         
@@ -41,12 +37,10 @@ struct TopSlider: View {
             self.loadImage()
         }
     }
-    
     private func loadImage() {
         guard let url = URL(string: photo.url) else {
             return
         }
-        
         DispatchQueue.global().async {
             if let data = try? Data(contentsOf: url) {
                 DispatchQueue.main.async {
