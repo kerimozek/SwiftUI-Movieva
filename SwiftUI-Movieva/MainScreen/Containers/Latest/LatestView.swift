@@ -7,18 +7,26 @@ struct LatestView: View {
     
     var body: some View {
         
-        VStack {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    ForEach(vm.movies ?? vm.placeholders, id: \.id) { item in
-                        LatestSingleMovie(item: item)
+        NavigationView {
+            VStack {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(vm.movies ?? vm.placeholders, id: \.id) { item in
+                            NavigationLink(
+                                destination: DetailScreen(item: item),
+                                label: {
+                                    LatestSingleMovie(item: item)
+                                })
+                        }
                     }
                 }
             }
+            .onAppear {
+                vm.fetchMovies()
+            }
         }
-        .onAppear {
-            vm.fetchMovies()
-        }
+        
+        
     }
 }
 
