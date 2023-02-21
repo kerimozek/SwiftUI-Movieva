@@ -6,47 +6,48 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct TopSlider: View {
-
-    @State private var imageData: Data?
-    @State var isLoading = true
-    let photo: Photos
-
+    
+    @ObservedObject private var vm = MovieViewModel()
+    
     var body: some View {
-
-        VStack {
-            if let data = imageData {
-                Image(uiImage: UIImage(data: data)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200)
-                    .cornerRadius(12)
-            } else {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .scaleEffect(2.0)
-                    .foregroundColor(.white)
-                    .padding(20)
-                    .clipShape(Circle())
-                    .opacity(isLoading ? 1.0 : 0.0)
-
-            }
-        }
-        .onAppear {
-            self.loadImage()
-        }
-    }
-    private func loadImage() {
-        guard let url = URL(string: photo.url) else {
-            return
-        }
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: url) {
-                DispatchQueue.main.async {
-                    self.imageData = data
+        
+        NavigationView {
+            VStack {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(vm.movies ?? vm.placeholders, id: \.id) { item in
+                            NavigationLink(
+                                destination: DetailScreen(item: item),
+                                label: {
+                                    TopSliderSingle(item: item)
+                                })
+                        }
+                    }
                 }
             }
+            .onAppear {
+                vm.fetchMovies()
+            }
+        }
+    }
+}
+
+
+struct TopSliderSingle: View {
+    
+    var item: ResultMovie
+    
+    var body: some View {
+        VStack {
+            WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.backdropPath ?? "")"))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 350, height: 250)
+                .redacted(reason: item.posterPath == nil ? .placeholder : .init())
+                .cornerRadius(12)
         }
     }
 }
@@ -54,10 +55,6 @@ struct TopSlider: View {
 
 struct TopSlider_Previews: PreviewProvider {
     static var previews: some View {
-        TopSlider(photo: .init(albumId: 0,
-                               id: 0,
-                               title: "Mikasa",
-                               url: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ffe099fb-0ab3-4d79-aabc-5b1cbc0eaf7a/ddwmnda-0062c801-37ea-4f60-967c-4702c33e28c1.jpg/v1/fill/w_1280,h_1431,q_75,strp/attack_on_titan___mikasa_ackerman_by_munyi90_ddwmnda-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZmZTA5OWZiLTBhYjMtNGQ3OS1hYWJjLTViMWNiYzBlYWY3YVwvZGR3bW5kYS0wMDYyYzgwMS0zN2VhLTRmNjAtOTY3Yy00NzAyYzMzZTI4YzEuanBnIiwiaGVpZ2h0IjoiPD0xNDMxIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uud2F0ZXJtYXJrIl0sIndtayI6eyJwYXRoIjoiXC93bVwvZmZlMDk5ZmItMGFiMy00ZDc5LWFhYmMtNWIxY2JjMGVhZjdhXC9tdW55aTkwLTQucG5nIiwib3BhY2l0eSI6OTUsInByb3BvcnRpb25zIjowLjQ1LCJncmF2aXR5IjoiY2VudGVyIn19.jYCjvEe1UPPsQBosSH0dYBJU00VDAXWPfnqRIc3GN28",
-                               thumbnailUrl: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ffe099fb-0ab3-4d79-aabc-5b1cbc0eaf7a/ddwmnda-0062c801-37ea-4f60-967c-4702c33e28c1.jpg/v1/fill/w_1280,h_1431,q_75,strp/attack_on_titan___mikasa_ackerman_by_munyi90_ddwmnda-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZmZTA5OWZiLTBhYjMtNGQ3OS1hYWJjLTViMWNiYzBlYWY3YVwvZGR3bW5kYS0wMDYyYzgwMS0zN2VhLTRmNjAtOTY3Yy00NzAyYzMzZTI4YzEuanBnIiwiaGVpZ2h0IjoiPD0xNDMxIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uud2F0ZXJtYXJrIl0sIndtayI6eyJwYXRoIjoiXC93bVwvZmZlMDk5ZmItMGFiMy00ZDc5LWFhYmMtNWIxY2JjMGVhZjdhXC9tdW55aTkwLTQucG5nIiwib3BhY2l0eSI6OTUsInByb3BvcnRpb25zIjowLjQ1LCJncmF2aXR5IjoiY2VudGVyIn19.jYCjvEe1UPPsQBosSH0dYBJU00VDAXWPfnqRIc3GN28"))
+        TopSlider()
     }
 }
