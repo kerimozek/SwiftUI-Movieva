@@ -8,31 +8,36 @@
 import SwiftUI
 
 struct TopRatedView: View {
-  
+    
+    @State private var movies = [ResultMovie]()
+    @State private var isLoading = false
+    
     var body: some View {
-        GeometryReader { geometry in
-                    ScrollView {
-                        VStack(spacing: 20) {
-                            ForEach(0..<6) { index in
-                                HStack(spacing: 20) {
-                                    ForEach(0..<3) { columnIndex in
-                                        Image("mikasa")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(height: 150)
-                                            .padding(6)
-                                            .background(Color.blue)
-                                            .cornerRadius(8)
-                                    }
-                                }
-                            }
-                        }
-                        .padding()
-                    }
-                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+        VStack {
+            if isLoading {
+                ProgressView()
+            } else {
+                List(movies, id: \.id) { movie in
+                    Text(movie.title ?? "")
+                }
+                .padding()
+            }
+        }
+        .onAppear {
+            isLoading = true
+            PopularManager.shared.getPopular(page: 1) { results, error in
+                if let results = results {
+                    isLoading = false
+                    movies = results
+                } else if let error = error {
+                    isLoading = false
+                    print(error)
                 }
             }
         }
+    }
+}
+
 
 struct TopRated_Previews: PreviewProvider {
     static var previews: some View {
