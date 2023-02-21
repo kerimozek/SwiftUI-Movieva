@@ -17,16 +17,15 @@ struct ContentView: View {
                         Image(systemName: "house")
                     }
                    
-                ListViewDeneme()
+                SearchScreen()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                     }
-                LatestView()
+                WatchList()
                     .tabItem {
                         Image(systemName: "bookmark")
                     }
             }
-              
     }
 }
 
