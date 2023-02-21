@@ -39,8 +39,6 @@ struct MainScreen: View {
                 .onAppear(perform: vm.fetchMovies)
             }
         }
-       
-        
     }
 }
 
