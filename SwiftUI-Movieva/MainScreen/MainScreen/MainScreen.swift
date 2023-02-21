@@ -20,7 +20,17 @@ struct MainScreen: View {
                         .padding(16)
                         
                         Section{
-                            LatestView()
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 12) {
+                                    ForEach(vm.movies ?? vm.placeholders, id: \.id) { item in
+                                        NavigationLink(
+                                            destination: DetailScreen(item: item),
+                                            label: {
+                                                TopSliderSingle(item: item)
+                                            })
+                                    }
+                                }
+                            }
                         }
                         .padding(.horizontal, 16)
                         .padding(.bottom, 8)
