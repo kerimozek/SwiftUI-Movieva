@@ -11,12 +11,14 @@ struct TopRatedView: View {
     
     @State private var movies = [ResultMovie]()
     @State private var isLoading = false
+    @StateObject private var vm = MovieViewModel()
     
     var body: some View {
         VStack {
             if isLoading {
                 ProgressView()
             } else {
+                
                 List(movies, id: \.id) { movie in
                     Text(movie.title ?? "")
                 }
