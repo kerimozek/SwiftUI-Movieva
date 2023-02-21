@@ -19,7 +19,7 @@ struct DetailScreen: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
             VStack(alignment: .leading) {
-                WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.backdropPath ?? "")"))
+                WebImage(url: URL(string: "https://image.tmdb.org/t/p/original\(item.backdropPath ?? "")"))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
@@ -66,10 +66,9 @@ struct DetailScreen: View {
                         }
                         .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.124825187, green: 0.1294132769, blue: 0.1380611062, alpha: 1)), Color.clear]), startPoint: .bottom, endPoint: .top))
                     )
-                    .cornerRadius(40)
                 
                 Text(viewModel.movies?.overview ?? "Loading...")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
                     .redacted(reason: viewModel.movies?.overview == nil ? .placeholder : .init())
                     .padding()
                 
@@ -78,7 +77,7 @@ struct DetailScreen: View {
         })
         .navigationBarTitle("")
         .navigationBarHidden(true)
-        .background(Color("background"))
+        .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)), Color.clear]), startPoint: .bottom, endPoint: .top))
         .ignoresSafeArea(.all, edges: .all)
         .onAppear {
             viewModel.fetchData(id: item.id!)
