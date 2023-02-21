@@ -1,30 +1,26 @@
 import SwiftUI
 
 struct LatestView: View {
+    
+    @StateObject private var vm = MovieViewModel()
+    
     var body: some View {
-        GeometryReader { geometry in
-                    ScrollView {
-                        VStack(spacing: 20) {
-                            ForEach(0..<6) { index in
-                                HStack(spacing: 20) {
-                                    ForEach(0..<3) { columnIndex in
-                                        Image("levi")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(height: 150)
-                                            .padding(6)
-                                            .background(Color.green)
-                                            .cornerRadius(8)
-                                    }
-                                }
-                            }
-                        }
-                        .padding()
-                    }
-                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 12) {
+                ForEach(vm.movies ?? vm.placeholders, id: \.id) { item in
+                    NavigationLink(
+                        destination: DetailScreen(item: item),
+                        label: {
+                            LatestSingleMovie(item: item)
+                        })
                 }
             }
+            .padding(.horizontal)
+            .onAppear(perform: vm.fetchMovies)
         }
+    }
+}
 
 struct LatestView_Previews: PreviewProvider {
     static var previews: some View {
