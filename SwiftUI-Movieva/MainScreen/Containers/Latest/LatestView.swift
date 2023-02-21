@@ -1,55 +1,34 @@
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct LatestView: View {
-    
-    @ObservedObject private var vm = MovieViewModel()
-    
     var body: some View {
-        
-        NavigationView {
-            VStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        ForEach(vm.movies ?? vm.placeholders, id: \.id) { item in
-                            NavigationLink(
-                                destination: DetailScreen(item: item),
-                                label: {
-                                    LatestSingleMovie(item: item)
-                                })
+        GeometryReader { geometry in
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            ForEach(0..<6) { index in
+                                HStack(spacing: 20) {
+                                    ForEach(0..<3) { columnIndex in
+                                        Image("levi")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(height: 150)
+                                            .padding(6)
+                                            .background(Color.green)
+                                            .cornerRadius(8)
+                                    }
+                                }
+                            }
                         }
+                        .padding()
                     }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
             }
-            .onAppear {
-                vm.fetchMovies()
-            }
         }
-        
-        
-    }
-}
-
-
-struct LatestSingleMovie: View {
-    
-    var item: ResultMovie
-    
-    var body: some View {
-        VStack {
-            WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.backdropPath ?? "")"))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 350, height: 250)
-                .redacted(reason: item.posterPath == nil ? .placeholder : .init())
-                .cornerRadius(12)
-        }
-    }
-}
-
 
 struct LatestView_Previews: PreviewProvider {
     static var previews: some View {
         LatestView()
     }
 }
+
