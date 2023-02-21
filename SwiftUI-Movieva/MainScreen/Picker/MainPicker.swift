@@ -9,10 +9,14 @@ import SwiftUI
 
 struct MainPicker: View {
     
+    @StateObject private var vm = MovieViewModel()
+    
     var views = ["Latest", "Upcoming", "TopRated"]
+    
     @State private var selectedView = 0
     
     var body: some View {
+        
         VStack {
             Picker(selection: $selectedView, label: Text("Select a view")) {
                 ForEach(0..<views.count, id: \.self) {

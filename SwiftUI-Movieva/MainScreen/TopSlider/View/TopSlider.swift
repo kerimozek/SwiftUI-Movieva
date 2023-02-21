@@ -9,7 +9,6 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 
-
 struct TopSliderSingle: View {
     
     var item: ResultMovie
