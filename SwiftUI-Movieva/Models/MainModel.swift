@@ -31,6 +31,8 @@ struct Company: Codable {
 }
 
 
+import Foundation
+
 // MARK: - Movie
 struct Movie: Codable {
     let page: Int?
@@ -50,8 +52,7 @@ struct ResultMovie: Codable {
     let backdropPath: String?
     let genreIDS: [Int]?
     let id: Int?
-    let originalLanguage: OriginalLanguage?
-    let originalTitle, overview: String?
+    let originalLanguage, originalTitle, overview: String?
     let popularity: Double?
     let posterPath, releaseDate, title: String?
     let video: Bool?
@@ -74,12 +75,6 @@ struct ResultMovie: Codable {
     }
 }
 
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case es = "es"
-    case ko = "ko"
-    case no = "no"
-}
 
 
 
