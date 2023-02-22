@@ -13,6 +13,7 @@ struct LatestView: View {
                         destination: DetailScreen(item: item),
                         label: {
                             LatestSingleMovie(item: item)
+                                .id(item.id! - 1) // provide a unique identifier
                         })
                 }
             }
@@ -21,6 +22,7 @@ struct LatestView: View {
         }
     }
 }
+
 
 struct LatestView_Previews: PreviewProvider {
     static var previews: some View {

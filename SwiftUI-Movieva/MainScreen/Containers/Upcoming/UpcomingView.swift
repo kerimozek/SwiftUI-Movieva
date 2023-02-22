@@ -19,7 +19,8 @@ struct UpcomingView: View {
                     NavigationLink(
                         destination: DetailScreen(item: item),
                         label: {
-                            LatestSingleMovie(item: item)
+                            UpcomingSinleMovie(item: item)
+                                .id(item.id! - 2) // provide a unique identifier
                         })
                 }
             }

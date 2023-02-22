@@ -1,14 +1,13 @@
 //
-//  TopRated.swift
+//  TopViewDeneme.swift
 //  SwiftUI-Movieva
 //
-//  Created by PSI_ErsanV on 3.02.2023.
+//  Created by PSI_ErsanV on 22.02.2023.
 //
 
 import SwiftUI
 
-struct TopRatedView: View {
-    
+struct TopViewDeneme: View {
     @State private var movies = [ResultMovie]()
     @State private var isLoading = false
     @StateObject private var vm = MovieViewModel()
@@ -41,9 +40,8 @@ struct TopRatedView: View {
     }
 }
 
-
-struct TopRated_Previews: PreviewProvider {
+struct TopViewDeneme_Previews: PreviewProvider {
     static var previews: some View {
-        TopRatedView()
+        TopViewDeneme()
     }
 }
