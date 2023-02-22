@@ -15,7 +15,6 @@ struct DetailScreen: View {
     @ObservedObject private var viewModel = MovieDetailViewModel()
     @Environment(\.presentationMode) var presentation
     
-    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
             VStack(alignment: .leading) {
@@ -66,6 +65,7 @@ struct DetailScreen: View {
                         }
                         .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.124825187, green: 0.1294132769, blue: 0.1380611062, alpha: 1)), Color.clear]), startPoint: .bottom, endPoint: .top))
                     )
+                    .id(item.id ?? 0)
                 
                 Text(viewModel.movies?.overview ?? "Loading...")
                     .foregroundColor(.white)
@@ -82,8 +82,11 @@ struct DetailScreen: View {
         .onAppear {
             viewModel.fetchData(id: item.id!)
         }
+        .id(item.id ?? 0)
     }
 }
+
+
 
 struct DetailScreen_Previews: PreviewProvider {
     static var previews: some View {
