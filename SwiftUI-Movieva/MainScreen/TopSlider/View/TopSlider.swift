@@ -18,10 +18,11 @@ struct TopSliderSingle: View {
             WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.backdropPath ?? "")"))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 350, height: 250)
+                .frame(width: UIScreen.main.bounds.width - 30, height: 250)
                 .redacted(reason: item.posterPath == nil ? .placeholder : .init())
                 .cornerRadius(12)
         }
+        .padding(.horizontal, 15)
     }
 }
 
