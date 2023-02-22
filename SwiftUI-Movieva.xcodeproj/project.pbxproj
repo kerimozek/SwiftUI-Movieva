@@ -30,6 +30,8 @@
 		ABF208C929A4F56D004826FC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208C829A4F56D004826FC /* NetworkManager.swift */; };
 		ABF208CD29A4F9FE004826FC /* PopularManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208CC29A4F9FE004826FC /* PopularManager.swift */; };
 		ABF208CF29A5039F004826FC /* TopRatedSingleMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208CE29A5039F004826FC /* TopRatedSingleMovie.swift */; };
+		ABF208D129A6322B004826FC /* TopViewDeneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208D029A6322B004826FC /* TopViewDeneme.swift */; };
+		ABF208D329A63E05004826FC /* UpcomingSinleMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF208D229A63E05004826FC /* UpcomingSinleMovie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		ABF208C829A4F56D004826FC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		ABF208CC29A4F9FE004826FC /* PopularManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularManager.swift; sourceTree = "<group>"; };
 		ABF208CE29A5039F004826FC /* TopRatedSingleMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedSingleMovie.swift; sourceTree = "<group>"; };
+		ABF208D029A6322B004826FC /* TopViewDeneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewDeneme.swift; sourceTree = "<group>"; };
+		ABF208D229A63E05004826FC /* UpcomingSinleMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingSinleMovie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF20894298CFAF5004826FC /* UpcomingView.swift */,
+				ABF208D229A63E05004826FC /* UpcomingSinleMovie.swift */,
 			);
 			path = Upcoming;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF20892298CF775004826FC /* TopRatedView.swift */,
+				ABF208D029A6322B004826FC /* TopViewDeneme.swift */,
 				ABF208CE29A5039F004826FC /* TopRatedSingleMovie.swift */,
 			);
 			path = TopRated;
@@ -365,9 +371,11 @@
 				ABF20893298CF775004826FC /* TopRatedView.swift in Sources */,
 				ABCE0EB7298BCBE000B5D8E1 /* ContentView.swift in Sources */,
 				ABF208CF29A5039F004826FC /* TopRatedSingleMovie.swift in Sources */,
+				ABF208D129A6322B004826FC /* TopViewDeneme.swift in Sources */,
 				ABCE0EB5298BCBE000B5D8E1 /* SwiftUI_Movieva.swift in Sources */,
 				ABCE0ECF298BD6DA00B5D8E1 /* WatchList.swift in Sources */,
 				ABF208C429A4ECC5004826FC /* LatestSingleMovie.swift in Sources */,
+				ABF208D329A63E05004826FC /* UpcomingSinleMovie.swift in Sources */,
 				ABF20895298CFAF5004826FC /* UpcomingView.swift in Sources */,
 				ABF20897298CFAFD004826FC /* LatestView.swift in Sources */,
 				ABF208C629A4F240004826FC /* NetworkHelper.swift in Sources */,
@@ -427,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -481,7 +489,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -496,13 +504,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-Movieva/Preview Content\"";
-				DEVELOPMENT_TEAM = 78MJ3JMN9B;
+				DEVELOPMENT_TEAM = 44BHC3G82R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "SwiftUI-Movieva";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -513,11 +523,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.psigaming.SwiftUI-API-Call-Decode-JSON";
+				PRODUCT_BUNDLE_IDENTIFIER = com.psigaming.SwiftUIMovieva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -526,13 +537,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-Movieva/Preview Content\"";
-				DEVELOPMENT_TEAM = 78MJ3JMN9B;
+				DEVELOPMENT_TEAM = 44BHC3G82R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "SwiftUI-Movieva";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -543,11 +556,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.psigaming.SwiftUI-API-Call-Decode-JSON";
+				PRODUCT_BUNDLE_IDENTIFIER = com.psigaming.SwiftUIMovieva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
