@@ -1,3 +1,11 @@
+//
+//  UpcomingView.swift
+//  SwiftUI-Movieva
+//
+//  Created by PSI_ErsanV on 3.02.2023.
+//
+
+
 import SwiftUI
 
 struct LatestView: View {
@@ -13,7 +21,7 @@ struct LatestView: View {
                         destination: DetailScreen(item: item),
                         label: {
                             LatestSingleMovie(item: item)
-                                .id(item.id! - 1) // provide a unique identifier
+                                .id(item.originalTitle) // provide a unique identifier
                         })
                 }
             }

@@ -10,19 +10,19 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct UpcomingSinleMovie: View {
-
-        var item: ResultMovie
-        
-        var body: some View {
-            VStack {
-                WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.posterPath ?? "")"))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .redacted(reason: item.posterPath == nil ? .placeholder : .init())
-                    .cornerRadius(12)
-            }
+    var item: ResultMovie
+    
+    var body: some View {
+        VStack {
+            WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.posterPath ?? "")"))
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .redacted(reason: item.posterPath == nil ? .placeholder : .init())
+                .cornerRadius(12)
         }
+        .id(item.id) // provide a unique identifier
     }
+}
 
 
     struct UpcomingSinleMovie_Previews: PreviewProvider {

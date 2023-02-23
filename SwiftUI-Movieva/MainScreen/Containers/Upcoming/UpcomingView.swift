@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct UpcomingView: View {
-    
     @StateObject private var vm = MovieViewModel()
     
     var body: some View {
-        
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 12) {
                 ForEach(vm.movies ?? vm.placeholders, id: \.id) { item in
@@ -20,12 +18,12 @@ struct UpcomingView: View {
                         destination: DetailScreen(item: item),
                         label: {
                             UpcomingSinleMovie(item: item)
-                                .id(item.id! - 2) // provide a unique identifier
                         })
+                        .id(item.id) // provide a unique identifier
                 }
             }
             .padding(.horizontal)
-            .onAppear(perform: vm.fetchMovies)
+            .onAppear(perform: vm.fetchUpcomingMovies)
         }
     }
 }

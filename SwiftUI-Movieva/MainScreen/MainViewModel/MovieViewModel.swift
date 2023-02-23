@@ -36,6 +36,34 @@ class MovieViewModel: ObservableObject {
             }
         }.resume()
     }
+    
+    func fetchUpcomingMovies() {
+        let usersUrlString = "https://api.themoviedb.org/3/movie/upcoming?api_key=fd24fe5ba58021d3f54a2a7c04297951&language=en-US"
+        let url = URL(string: usersUrlString)
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+            } else {
+                guard let data = data else { return }
+                
+                do {
+                    let result = try JSONDecoder().decode(Movie.self, from: data)
+                    DispatchQueue.main.async {
+                        self?.movies = result.results
+                    }
+                } catch {
+                    print("error: \(error.localizedDescription)")
+                }
+            }
+        }.resume()
+    }
+    
+    
+    
 }
 
 
