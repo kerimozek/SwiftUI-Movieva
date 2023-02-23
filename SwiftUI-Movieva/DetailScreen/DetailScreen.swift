@@ -82,7 +82,7 @@ struct DetailScreen: View {
         .onAppear {
             viewModel.fetchData(id: item.id!)
         }
-        .id(item.id ?? 0)
+        .id(item.title)
     }
 }
 
