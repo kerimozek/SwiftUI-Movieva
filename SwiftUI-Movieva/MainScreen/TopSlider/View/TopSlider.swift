@@ -10,7 +10,6 @@ import SDWebImageSwiftUI
 
 
 struct TopSliderSingle: View {
-    
     var item: ResultMovie
     
     var body: some View {
@@ -18,11 +17,11 @@ struct TopSliderSingle: View {
             WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.backdropPath ?? "")"))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width - 30, height: 250)
+                .frame(width: 350, height: 250)
                 .redacted(reason: item.posterPath == nil ? .placeholder : .init())
                 .cornerRadius(12)
+                .id(item.overview) // provide a unique identifier
         }
-        .padding(.horizontal, 15)
     }
 }
 
