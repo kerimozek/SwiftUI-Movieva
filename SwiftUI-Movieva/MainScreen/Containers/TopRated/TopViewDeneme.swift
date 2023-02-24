@@ -8,32 +8,25 @@
 import SwiftUI
 
 struct TopViewDeneme: View {
-    @State private var movies = [ResultMovie]()
-    @State private var isLoading = false
-    @StateObject private var vm = MovieViewModel()
+    let items = Array(0..<100)
     
     var body: some View {
-        VStack {
-            if isLoading {
-                ProgressView()
-            } else {
-                
-                List(movies, id: \.id) { movie in
-                    Text(movie.title ?? "")
+        ScrollViewReader { proxy in
+            VStack {
+                Button("Scroll to Top") {
+                    proxy.scrollTo(0, anchor: .top)
                 }
-                .listStyle(.plain)
-                .padding()
-            }
-        }
-        .onAppear {
-            isLoading = true
-            PopularManager.shared.getPopular(page: 1) { results, error in
-                if let results = results {
-                    isLoading = false
-                    movies = results
-                } else if let error = error {
-                    isLoading = false
-                    print(error)
+                Button("Scroll to Bottom") {
+                    proxy.scrollTo(items.count - 1, anchor: .bottom)
+                }
+                
+                ScrollView {
+                    ForEach(items, id: \.self) { item in
+                        Text("Item \(item)")
+                            .font(.title)
+                            .frame(maxWidth: .infinity)
+                            .id(item)
+                    }
                 }
             }
         }
