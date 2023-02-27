@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct TopRatedView: View {
     
@@ -14,30 +15,26 @@ struct TopRatedView: View {
     @StateObject private var vm = MovieViewModel()
     
     var body: some View {
-        VStack {
-            if isLoading {
-                ProgressView()
-            } else {
-                
-                List(movies, id: \.id) { movie in
-                    Text(movie.title ?? "")
-                }
-                .listStyle(.plain)
-                .padding()
-            }
-        }
-        .onAppear {
-            isLoading = true
-            PopularManager.shared.getPopular(page: 1) { results, error in
-                if let results = results {
-                    isLoading = false
-                    movies = results
-                } else if let error = error {
-                    isLoading = false
-                    print(error)
+        ScrollView {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 20) {
+                ForEach(vm.movies ?? vm.placeholders, id: \.id) { movie in
+                    WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath ?? "")"))
+                        .resizable()
+                        .placeholder {
+                            ProgressView()
+                                .frame(width: 80, height: 80)
+                                .progressViewStyle(CircularProgressViewStyle())
+                        }
+                        .indicator(.activity)
+                        .transition(.fade(duration: 0.5))
+                        .scaledToFit()
+                        .frame(width: 120)
+                        .cornerRadius(10)
                 }
             }
+            .padding()
         }
+        .onAppear(perform: vm.fetchUpcomingMovies)
     }
 }
 
