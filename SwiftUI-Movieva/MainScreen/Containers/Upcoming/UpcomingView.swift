@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UpcomingView: View {
+    
     @StateObject private var vm = MovieViewModel()
     
     var body: some View {
@@ -17,7 +18,7 @@ struct UpcomingView: View {
                     NavigationLink(
                         destination: DetailScreen(item: item),
                         label: {
-                            UpcomingSinleMovie(item: item)
+                            UpcomingSingleMovie(item: item)
                         })
                         .id(item.id) // provide a unique identifier
                 }

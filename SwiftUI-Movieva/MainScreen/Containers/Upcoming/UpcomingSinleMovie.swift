@@ -9,7 +9,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct UpcomingSinleMovie: View {
+struct UpcomingSingleMovie: View {
     var item: ResultMovie
     
     var body: some View {
@@ -25,9 +25,9 @@ struct UpcomingSinleMovie: View {
 }
 
 
-    struct UpcomingSinleMovie_Previews: PreviewProvider {
+    struct UpcomingSingleMovie_Previews: PreviewProvider {
         static var previews: some View {
-            UpcomingSinleMovie(item: ResultMovie(adult: true,
+            UpcomingSingleMovie(item: ResultMovie(adult: true,
                                                      backdropPath: "/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg",
                                                      genreIDS: [28,12,878],
                                                      id: 505642,
