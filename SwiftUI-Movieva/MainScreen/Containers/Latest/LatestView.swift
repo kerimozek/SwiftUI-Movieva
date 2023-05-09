@@ -40,15 +40,13 @@ struct LatestView: View {
             .padding(.horizontal)
         }
         .onAppear {
-            vm.resetMovies()
             vm.fetchMovies()
+        }
+        .onDisappear {
+            vm.resetMovies()
         }
     }
 }
-
-
-
-
 
 
 struct LatestView_Previews: PreviewProvider {
