@@ -24,7 +24,7 @@ class MovieViewModel: ObservableObject {
             case .success(let movie):
                 DispatchQueue.main.async {
                     if shouldLoadNextPage {
-                        self?.movies.append(contentsOf: movie.results ?? [])
+                        self?.movies += movie.results ?? []
                     } else {
                         self?.movies = movie.results ?? []
                     }
@@ -36,6 +36,7 @@ class MovieViewModel: ObservableObject {
                 self?.isFetching = false
             }
         }
+        print(movies.count)
     }
     
     func nextPage() {
@@ -43,10 +44,12 @@ class MovieViewModel: ObservableObject {
     }
     
     func resetMovies() {
-        movies = []
+        movies.removeAll()
         currentPage = 1
+        print(movies.count)
     }
 }
+
 
 
 
