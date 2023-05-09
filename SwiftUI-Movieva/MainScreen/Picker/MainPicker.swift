@@ -28,9 +28,9 @@ struct MainPicker: View {
             if selectedView == 0 {
                 LatestView()
             } else if selectedView == 1 {
-                UpcomingView()
+                LatestView()
             } else {
-                TopRatedView()
+                LatestView()
             }
         }
     }
