@@ -20,7 +20,7 @@ struct UpcomingSingleMovie: View {
                 .redacted(reason: item.posterPath == nil ? .placeholder : .init())
                 .cornerRadius(12)
         }
-        .id(item.id) // provide a unique identifier
+        .id(item.id)
     }
 }
 
