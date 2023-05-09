@@ -47,9 +47,7 @@ struct MainScreen: View {
                             }
                             .padding(.horizontal, 16)
                             .padding(.bottom, 8)
-                            .onDisappear {
-                                vm.resetMovies()
-                            }
+                            
                             
                             VStack {
                                 Section {
@@ -64,8 +62,6 @@ struct MainScreen: View {
                     }
                     .onAppear {
                         vm.fetchMovies()
-                    }
-                    .onDisappear {
                         vm.resetMovies()
                     }
                 }
@@ -74,9 +70,9 @@ struct MainScreen: View {
     }
     
 }
-    
-    struct MainScreen_Previews: PreviewProvider {
-        static var previews: some View {
-            MainScreen()
-        }
+
+struct MainScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        MainScreen()
     }
+}
