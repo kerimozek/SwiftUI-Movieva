@@ -12,28 +12,29 @@ class MovieViewModel: ObservableObject {
     @Published var fetchNextPage = false
     private var currentPage = 1
     private var isFetching = false
-
+    
     func fetchMovies(shouldLoadNextPage: Bool = false) {
         guard !isFetching else { return }
         isFetching = true
         let urlString = APIURLs.popularMovies(page: currentPage)
         guard let url = URL(string: urlString) else { return }
-
+        
         NetworkManager.shared.request(type: Movie.self, url: url, method: .get) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let movie):
                 DispatchQueue.main.async {
                     if shouldLoadNextPage {
-                        self?.movies += movie.results ?? []
+                        self.movies += movie.results ?? []
                     } else {
-                        self?.movies = movie.results ?? []
+                        self.movies = movie.results ?? []
                     }
-                    self?.currentPage += 1
-                    self?.isFetching = false
+                    self.currentPage += 1
+                    self.isFetching = false
                 }
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
-                self?.isFetching = false
+                self.isFetching = false
             }
         }
         print(movies.count)
@@ -46,6 +47,7 @@ class MovieViewModel: ObservableObject {
     func resetMovies() {
         movies.removeAll()
         currentPage = 1
+        isFetching = false
         print(movies.count)
     }
 }
