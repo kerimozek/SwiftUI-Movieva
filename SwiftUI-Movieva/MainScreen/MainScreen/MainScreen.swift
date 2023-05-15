@@ -20,49 +20,18 @@ struct MainScreen: View {
                         .padding(16)
                         
                         Section {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 12) {
-                                    ForEach(vm.movies.indices, id: \.self) { index in
-                                        let item = vm.movies[index]
-                                        NavigationLink(
-                                            destination: DetailScreen(item: item),
-                                            label: {
-                                                TopSliderSingle(item: item)
-                                            })
-                                        
-                                        if index == vm.movies.count - 1 {
-                                            ProgressView()
-                                                .onAppear {
-                                                    if !vm.fetchNextPage {
-                                                        vm.fetchNextPage = true
-                                                        vm.nextPage()
-                                                    }
-                                                }
-                                                .onDisappear {
-                                                    vm.fetchNextPage = false
-                                                }
-                                        }
-                                    }
-                                }
-                            }
+                            TopSlider()
                             .padding(.horizontal, 16)
-                            .padding(.bottom, 8)
-                            
                             
                             VStack {
                                 Section {
                                     MainPicker()
                                 }
-                                .padding(8)
                             }
                             .frame(height: 600)
                             .padding(.bottom, 8)
                         }
                         .padding(.bottom, 20)
-                    }
-                    .onAppear {
-                        vm.fetchMovies()
-                        vm.resetMovies()
                     }
                 }
             }
