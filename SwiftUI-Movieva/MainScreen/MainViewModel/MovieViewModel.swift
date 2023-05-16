@@ -37,7 +37,6 @@ class MovieViewModel: ObservableObject {
                 self.isFetching = false
             }
         }
-        print(movies.count)
     }
     
     func nextPage() {
@@ -48,7 +47,6 @@ class MovieViewModel: ObservableObject {
         movies.removeAll()
         currentPage = 1
         isFetching = false
-        print(movies.count)
     }
 }
 
