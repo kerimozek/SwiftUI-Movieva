@@ -14,9 +14,10 @@ struct LatestSingleMovie: View {
         
         var body: some View {
             VStack {
-                WebImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(item.posterPath ?? "")"))
+                WebImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(item.posterPath ?? "")"))
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
+               //     .aspectRatio(contentMode: .scaledt)
                     .redacted(reason: item.posterPath == nil ? .placeholder : .init())
                     .cornerRadius(12)
             }

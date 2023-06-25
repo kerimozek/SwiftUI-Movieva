@@ -22,28 +22,13 @@ struct TopSlider: View {
                         label: {
                             TopSliderSingle(item: item)
                         })
-                    
-                    if index == vm.movies.count - 1 {
-                        ProgressView()
-                            .onAppear {
-                                if !vm.fetchNextPage {
-                                    vm.fetchNextPage = true
-                                    vm.nextPage()
-                                }
-                            }
-                            .onDisappear {
-                                vm.fetchNextPage = false
-                            }
-                    }
                 }
             }
         }
         .onAppear {
             vm.fetchMovies()
         }
-//        .onDisappear {
-//            vm.resetMovies()
-//        }
+
     }
 }
 
