@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct LatestView: View {
     @StateObject private var vm = MovieViewModel()
@@ -19,9 +20,21 @@ struct LatestView: View {
                     NavigationLink(
                         destination: DetailScreen(item: item),
                         label: {
-                            LatestSingleMovie(item: item)
-                                .id(item.originalTitle) // provide a unique identifier
+                            WebImage(url: URL(string: "https://image.tmdb.org/t/p/w200\(item.posterPath ?? "")"))
+                                .resizable()
+                                .placeholder {
+                                    ProgressView()
+                                }
+                                .scaledToFit()
+                                .cornerRadius(12)
+                                .onAppear {
+                                    if let posterPath = item.posterPath,
+                                       let imageURL = URL(string: "https://image.tmdb.org/t/p/w200\(posterPath)") {
+                                        SDWebImagePrefetcher.shared.prefetchURLs([imageURL].compactMap { $0 })
+                                    }
+                                }
                         })
+                        .id(item.originalTitle) // provide a unique identifier
                         .onAppear {
                             if index == vm.movies.count - 1 {
                                 if vm.movies.count < 99 {
@@ -59,6 +72,7 @@ struct LatestView_Previews: PreviewProvider {
         LatestView()
     }
 }
+
 
 
 
